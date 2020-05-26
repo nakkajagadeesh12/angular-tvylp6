@@ -12,13 +12,14 @@ import { CartService } from '../cart.service';
 })
 export class ProductDetailsComponent implements OnInit {
   product;
-
+productId;
   constructor(
     private route: ActivatedRoute,
     private cartService: CartService
   ) { }
 
   ngOnInit() {
+    this.productId = this.route.snapshot.paramMap.get('productId');
     this.route.paramMap.subscribe(params => {
       this.product = products[+params.get('productId')];
     });
